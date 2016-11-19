@@ -12,9 +12,9 @@ DROP TABLE IF EXISTS movie_to_award;
 #-- nothing special, a person has a first, middle, last name and date of birth
 CREATE TABLE person (
 	id INT NOT NULL AUTO_INCREMENT,
-	f_name VARCHAR(255),
+	f_name VARCHAR(255) NOT NULL,
 	m_name VARCHAR(255),
-	l_name VARCHAR(255),
+	l_name VARCHAR(255) NOT NULL,
 	dob DATE,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -22,21 +22,21 @@ CREATE TABLE person (
 #-- a company has a name
 CREATE TABLE company (
 	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(255),
+	name VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 #-- a genre has a name
 CREATE TABLE genre (
 	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(255),
+	name VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 #-- a movie has a title and release date, and a reference to a company and a genre
 CREATE TABLE movie (
 	id INT NOT NULL AUTO_INCREMENT,
-	title VARCHAR(255),
+	title VARCHAR(255) NOT NULL,
 	release_date DATE,
 	company_id INT,
 	genre_id INT,
@@ -50,7 +50,7 @@ CREATE TABLE movie (
 
 CREATE TABLE award (
 	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(255),
+	name VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
