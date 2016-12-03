@@ -21,18 +21,58 @@
 	
 	
 	if($_POST['database'] == 'Person') {
-		$sqlstr = 'INSERT INTO ' . $_POST['database'] . '(first_name, last_name, dob) VALUES (?,?,?)';
-		if(!($stmt = $mysqli->prepare($sqlstr))){
-			echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+
+		if(!($stmt = $mysqli->prepare("INSERT INTO Person(first_name, last_name, dob) VALUES (?, ?, ?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
 		}
-		if(!($stmt->bind_param("sss", $_POST['FirstName'], $_POST['LastName'], $_POST['Date']))){
-			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+		if(!($stmt->bind_param("sss", $_POST['FirstName'], $_POST['LastName'], $_POST['DOB']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
 		}
-		if(!$stmt->execute()){
-			echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+		
+	} else if($_POST['database'] == 'Movie') {
+		
+		if(!($stmt = $mysqli->prepare("INSERT INTO Movie(title, company_id, genre_id) VALUES (?, ?, ?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
 		}
-		$_POST = NULL;
+		if(!($stmt->bind_param("sii", $_POST['MovieTitle'], $_POST['Company'], $_POST['Genre']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		
+	} else if($_POST['database'] == 'Company') {
+		
+		if(!($stmt = $mysqli->prepare("INSERT INTO Company(name) VALUES (?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		if(!($stmt->bind_param("s", $_POST['CompanyName']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		
+	} else if($_POST['database'] == 'Genre') {
+		
+	    if(!($stmt = $mysqli->prepare("INSERT INTO Genre(name) VALUES (?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		if(!($stmt->bind_param("s", $_POST['GenreType']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		
+	} else if($_POST['database'] == 'Award') {
+
+		if(!($stmt = $mysqli->prepare("INSERT INTO  Award(name) VALUES (?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		if(!($stmt->bind_param("s", $_POST['AwardName']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+		}
+	
 	}
+	
+	
+	if(!$stmt->execute()){
+		echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+	} else {
+        echo "Added " . $stmt->affected_rows . " rows to " . $_POST['database'] . ".";
+    }
 
 	
 ?>

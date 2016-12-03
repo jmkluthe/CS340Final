@@ -31,7 +31,7 @@
     if(!$stmt->execute()){
         echo "Execute failed: " . $stmt->errno . " " . $stmt->error;
     } else {
-        echo "Deleted " . $stmt->affected_rows . " rows to Award.";
+        echo "Deleted " . $stmt->affected_rows . " rows from " . $_POST['database'] . ".";
     }
 ?>
 

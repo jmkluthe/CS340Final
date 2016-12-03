@@ -57,16 +57,15 @@
 
 <!--Allow the user to add a movie to the database-->
 <div>
-    <form method="post" action="addMovie.php">
+    <form method="post" action="add.php">
         <!--Input the movie title into a textbox-->
         <fieldset>
-            <legend>Movie Title</legend>
+            <legend>Add a Movie</legend>
             <p>Title: <input type="text" name="MovieTitle" /></p>
-        </fieldset>
+        
         
         <!--The user selects the production company from a dynamically populated drop-down list. The list is populated from the Company table.-->
-        <fieldset>
-            <legend>Production Company</legend>
+			<p>Company: 
                 <select name="Company">
                     <?php
                         if(!($stmt = $mysqli->prepare("SELECT id, name FROM Company"))){
@@ -85,11 +84,10 @@
                     ?>
 
                 </select>
-        </fieldset>
+			</p>
 
         <!--The user selects the genre from a dynamically populated drop-down list. The list is populated from the Genre table.-->
-        <fieldset>
-            <legend>Movie Genre</legend>
+			<p>Genre: 
                 <select name="Genre">
                     <?php
                         if(!($stmt = $mysqli->prepare("SELECT id, name FROM Genre"))){
@@ -108,8 +106,10 @@
                     ?>
 
                 </select>
-        </fieldset>
+			</p>
+		<input type='hidden' name='database' value='Movie' />
         <p><input type="submit" /></p>
+		</fieldset>
     </form>
 </div>
 
@@ -149,24 +149,25 @@
 
 <!--Allow the user to add a person to the database-->
 <div>
-    <form method="post" action="addPerson.php">
+    <form method="post" action="add.php">
 
     <!--Input the cast/crew member name and date of birth-->
     <fieldset>
-        <legend>Cast/Crew Name</legend>
+        <legend>Add a Person</legend>
         <p>First Name: <input type="text" name="FirstName" /></p>
-    </fieldset>
+    
 
     <!--Input the last name into a textbox-->
-    <fieldset>
+    
         <p>Last Name: <input type="text" name="LastName" /></p>
-    </fieldset>
+    
 
     <!--Input the DOB into a textbox-->
-    <fieldset>
+    
         <p>Date of Birth: <input type="text" name="DOB" /></p>
-    </fieldset>
+    <input type='hidden' name='database' value='Person' />
     <p><input type="submit" /></p>
+	</fieldset>
     </form>
 </div>
 
@@ -204,14 +205,15 @@
 
 <!--Allow the user to add a genre to the database-->
 <div>
-    <form method="post" action="addGenre.php">
+    <form method="post" action="add.php">
 
     <!--Input the genre type-->
     <fieldset>
-        <legend>Movie Genre</legend>
+        <legend>Add a Genre</legend>
         <p>Genre Type: <input type="text" name="GenreType" /></p>
-    </fieldset>
+    <input type='hidden' name='database' value='Genre' />
     <p><input type="submit" /></p>
+	</fieldset>
     </form>
 </div>
 
@@ -249,14 +251,15 @@
 
 <!--Allow the user to add a production company to the database-->
 <div>
-    <form method="post" action="addCompany.php">
+    <form method="post" action="add.php">
 
         <!--Input the genre type-->
         <fieldset>
-            <legend>Production Company</legend>
+            <legend>Add a Production Company</legend>
             <p>Company Name: <input type="text" name="CompanyName" /></p>
-        </fieldset>
+			<input type='hidden' name='database' value='Company' />
         <p><input type="submit" /></p>
+        </fieldset>
     </form>
 </div>
 
@@ -294,14 +297,15 @@
 
 <!--Allow the user to add an award to the database-->
 <div>
-    <form method="post" action="addAward.php">
+    <form method="post" action="add.php">
 
         <!--Input the genre type-->
         <fieldset>
-            <legend>Movie Award</legend>
+            <legend>Add a Movie Award</legend>
             <p>Award Name: <input type="text" name="AwardName" /></p>
-        </fieldset>
+			<input type='hidden' name='database' value='Award' />
         <p><input type="submit" /></p>
+        </fieldset>
     </form>
 </div>
 
