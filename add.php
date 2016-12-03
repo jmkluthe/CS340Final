@@ -65,6 +65,24 @@
 			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
 		}
 	
+	} else if($_POST['database'] == 'Movie_to_Person') {
+
+		if(!($stmt = $mysqli->prepare("INSERT INTO  Movie_to_Person(movie_id, person_id, job_role) VALUES (?,?,?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		if(!($stmt->bind_param("iis", $_POST['Movie'], $_POST['Person'], $_POST['job_role']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+		}
+	
+	} else if($_POST['database'] == 'Movie_to_Award') {
+	
+		if(!($stmt = $mysqli->prepare("INSERT INTO  Movie_to_Award(movie_id, award_id) VALUES (?,?)"))){
+			echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+		}
+		if(!($stmt->bind_param("ii", $_POST['Movie'], $_POST['Award']))){
+			echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+		}
+	
 	}
 	
 	

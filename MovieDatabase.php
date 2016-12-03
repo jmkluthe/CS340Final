@@ -47,6 +47,9 @@
             }
             while ($stmt->fetch()){
                 echo "<tr>\n<td>" . $title . "\n</td>\n<td>" . $company_id . "</td>\n<td>" . $genre_id . "</td>\n";
+				//add edit/detail buttton
+				echo "<td><form method='get' action='movie_detail.php'>"
+					. "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Show Details/Edit' /></form></td>";
 				//add delete button
 				echo "<td><form method='post' action='delete.php'><input type='hidden' name='database' value='Movie' />"
 					. "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Delete Record' /></form></td></tr>";
