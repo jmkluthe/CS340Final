@@ -4,7 +4,8 @@
     
     ini_set('display_errors', 'On');
     //replace credentials as necessary
-   $mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
+    $mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
+	//$mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'seimsa-db', 'F9FHl9bn32cHFvJE', 'seimsa-db');
     if($mysqli->connect_errno) {
         echo 'Error connecting to database: ' . $mysqli->connect_errno . ' ' . $mysqli->connect_error;
     }
@@ -142,7 +143,10 @@
             }
             while ($stmt->fetch()){
                 echo "<tr>\n<td>" . $id . "\n</td>\n<td>" . $first_name . "</td>\n<td>" . $last_name . "</td>\n<td>" . $dob . "</td>\n";
-				//add delete button
+                //add edit/detail buttton
+                echo "<td><form method='get' action='person_detail.php'>"
+                . "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Show Details/Edit' /></form></td>";
+                //add delete button
 				echo "<td><form method='post' action='delete.php'><input type='hidden' name='database' value='Person' />"
 					. "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Delete Record' /></form></td></tr>";
 			}
@@ -198,7 +202,11 @@
         }
         while ($stmt->fetch()){
             echo "<tr>\n<td>" . $id . "\n</td>\n<td>" . $name . "</td>\n";
-			//add delete button
+            //add edit/detail buttton
+            echo "<td><form method='get' action='genre_detail.php'>"
+            . "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Show Details/Edit' /></form></td>";
+            
+            //add delete button
 				echo "<td><form method='post' action='delete.php'><input type='hidden' name='database' value='Genre' />"
 					. "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Delete Record' /></form></td></tr>";
         }

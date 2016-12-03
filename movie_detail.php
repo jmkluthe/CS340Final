@@ -3,6 +3,7 @@
     ini_set('display_errors', 'On');
     //replace credentials as necessary
    $mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
+   //$mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'seimsa-db', 'F9FHl9bn32cHFvJE', 'seimsa-db');
     if($mysqli->connect_errno) {
         echo 'Error connecting to database: ' . $mysqli->connect_errno . ' ' . $mysqli->connect_error;
     }
@@ -111,7 +112,7 @@
     <form method="post" action="add.php">
         <fieldset>
             <legend>Attach a Person to the Movie</legend>
-			<p>Company: 
+			<p>Person: 
                 <select name="Person">
                     <?php
                         if(!($stmt = $mysqli->prepare("SELECT id, first_name, last_name FROM Person"))){
@@ -231,7 +232,7 @@
     <form method="post" action="edit.php">
         <fieldset>
             <legend>Change the Genre</legend>
-			<p>Company: 
+			<p>Genre: 
                 <select name="value">
                     <?php
                         if(!($stmt = $mysqli->prepare("SELECT id, name FROM Genre"))){
