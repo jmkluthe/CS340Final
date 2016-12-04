@@ -252,7 +252,12 @@
             }
             while ($stmt->fetch()){
                 echo "<tr>\n<td>" . $id . "\n</td>\n<td>" . $name . "</td>\n";
-				//add delete button
+                
+                //add edit/detail buttton
+                echo "<td><form method='get' action='company_detail.php'>"
+                . "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Show Details/Edit' /></form></td>";
+                
+                //add delete button
 				echo "<td><form method='post' action='delete.php'><input type='hidden' name='database' value='Company' />"
 					. "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Delete Record' /></form></td></tr>";
             }
@@ -285,7 +290,7 @@
             <th>ID</th>
             <th>Name</th>
         </tr>
-        <!--Retrieve and display genre data from the Genre table-->
+        <!--Retrieve and display award data from the Award table-->
         <?php
             if(!($stmt = $mysqli->prepare("SELECT id, name FROM Award"))){
                 echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
@@ -298,7 +303,12 @@
             }
             while ($stmt->fetch()){
                 echo "<tr>\n<td>" . $id . "\n</td>\n<td>" . $name . "</td>\n";
-				//add delete button
+				
+                //add edit/detail buttton
+                echo "<td><form method='get' action='awards_detail.php'>"
+                . "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Show Details/Edit' /></form></td>";
+                
+                //add delete button
 				echo "<td><form method='post' action='delete.php'><input type='hidden' name='database' value='Award' />"
 					. "<input type='hidden' name='id' value='" . $id . "' /><input type='submit' value='Delete Record' /></form></td></tr>";
             }
